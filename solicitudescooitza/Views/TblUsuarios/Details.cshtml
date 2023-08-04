@@ -1,0 +1,91 @@
+﻿@model solicitudescooitza.Models.TblUsuarios
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TblUsuarios</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.primerNombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.primerNombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.segundoNombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.segundoNombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.primerApellido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.primerApellido)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.segundoApellido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.segundoApellido)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tercerApellido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tercerApellido)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Correo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Correo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Contraseña)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Contraseña)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CatGenerencia.descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CatGenerencia.descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CatRoles.descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CatRoles.descripcion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idTblUsuarios }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

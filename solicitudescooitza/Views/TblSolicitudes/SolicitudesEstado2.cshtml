@@ -1,0 +1,77 @@
+﻿@model IEnumerable<solicitudescooitza.Models.TblSolicitudes>
+@{
+    ViewBag.Title = "SolicitudesEstado2";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Solicitudes Pendientes de Autorizar</h2>
+
+<div class="mb-0">
+    <button type="button" class="btn btn-primary btn-lg" onclick="location.href='@Url.Action("Index", "TblSolicitudes")'" style="box-shadow: 0 0.15rem 1.75rem 0 rgb(33 40 50 / 15%); background: #153d77;">
+        <i class="bi bi-backspace-fill"></i>
+    </button>
+</div>
+<h3>Buscar por Nombre de Colaborador</h3>
+@using (Html.BeginForm("SolicitudesEstado2", "TblSolicitudes", FormMethod.Get))
+{
+    <div class="input-group mb-3">
+        @Html.TextBox("searchString", null, new { @class = "form-control", placeholder = "Ingrese el nombre del usuario" })
+        <button type="submit" class="btn btn-primary">Buscar</button>
+    </div>
+}
+<h3>Solicitudes de Anticipo</h3>
+<div class="table-responsive">
+    <table class="table table-bordered table-striped table-hover">
+        <tr>
+            <th>No. Solicitud</th>
+            <th>Usuario</th>
+            <th>Motivo Comision</th>
+            <th>Monto Total</th>
+            <th>Acciones</th>
+        </tr>
+        @foreach (var solicitud in Model.Where(s => s.idCatEstados == 2))
+        {
+            <tr>
+                <td>@solicitud.idTblSolicitudes</td>
+                <td>@solicitud.TblUsuarios.primerNombre, @solicitud.TblUsuarios.primerApellido</td>
+                <td>@solicitud.motivoComision</td>
+                <td>@solicitud.montoTotal</td>
+                <td>
+                    @Html.ActionLink("Detalles", "Details", new { id = solicitud.idTblSolicitudes }, new { @class = "btn btn-info" })
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+<h3>Solicitudes de Liquidación </h3>
+<div class="table-responsive">
+    <table class="table table-bordered table-striped table-hover">
+        <tr>
+            <th>No. Solicitud</th>
+            <th>Usuario</th>
+            <th>Motivo Comision</th>
+            <th>Monto Total</th>
+            <th>Acciones</th>
+        </tr>
+        @foreach (var solicitud in Model.Where(s => s.idCatEstados == 5))
+        {
+            <tr>
+                <td>@solicitud.idTblSolicitudes</td>
+                <td>@solicitud.TblUsuarios.primerNombre, @solicitud.TblUsuarios.primerApellido</td>
+                <td>@solicitud.motivoComision</td>
+                <td>@solicitud.montoTotal</td>
+                <td>
+                    @Html.ActionLink("Detalles", "Detalles", new { id = solicitud.idTblSolicitudes }, new { @class = "btn btn-info" })
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+</div>
+
+
+
+
+

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8cc118d7f3fb44748334aee05d1de197" Name="Diagram1">
+        <EntityTypeShape EntityType="developerModel.CatEstados" Width="1.5" PointX="0.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="developerModel.CatGenerencia" Width="1.5" PointX="1.5" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="developerModel.CatProveedores" Width="1.5" PointX="3" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="developerModel.CatRoles" Width="1.5" PointX="1.5" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="developerModel.CatRubros" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="developerModel.CatTipoSolicitud" Width="1.5" PointX="3" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="developerModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="developerModel.TblCombustible" Width="1.5" PointX="3.75" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="developerModel.TblSolicitudes" Width="1.5" PointX="5.25" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="developerModel.TblSolicitudesCatRubros" Width="1.5" PointX="7.5" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="developerModel.TblSolicitudesPendientes" Width="1.5" PointX="10.5" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="developerModel.TblUsuarios" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="developerModel.database_firewall_rules" Width="1.5" PointX="9.75" PointY="3.625" IsExpanded="true" />
+        <AssociationConnector Association="developerModel.FK_CatRubros_CatEstados" ManuallyRouted="false" />
+        <AssociationConnector Association="developerModel.FK_TblSolicitudes_CatEstados" ManuallyRouted="false" />
+        <AssociationConnector Association="developerModel.FK_TblUsuarios_CatGenerencia" ManuallyRouted="false" />
+        <AssociationConnector Association="developerModel.FK_TblSolicitud_CatProveedores" ManuallyRouted="false" />
+        <AssociationConnector Association="developerModel.FK_TblSolicitudesCatRubros_CatProveedores" ManuallyRouted="false" />
+        <AssociationConnector Association="developerModel.FK_TblUsuarios_CatRols" ManuallyRouted="false" />
+        <AssociationConnector Association="developerModel.FK_CatRubros_TblUsuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="developerModel.FK_TblSolicitud_CatRubros" ManuallyRouted="false" />
+        <AssociationConnector Association="developerModel.FK_TblSolicitudes_CatRubros" ManuallyRouted="false" />
+        <AssociationConnector Association="developerModel.FK_TblSolicitudesCatRubros_CatRubros" ManuallyRouted="false" />
+        <AssociationConnector Association="developerModel.FK_TblSolicitudes_CatTipoSolicitud" ManuallyRouted="false" />
+        <AssociationConnector Association="developerModel.FK_TblSolicitud_TblUsuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="developerModel.FK_TblSolicitudesCatRubros_TblSolicitudes" ManuallyRouted="false" />
+        <AssociationConnector Association="developerModel.FK_TblSolicitudesPendientes_TblSolicitudes" ManuallyRouted="false" />
+        <AssociationConnector Association="developerModel.FK_TblSolicitudesPendientes_TblUsuarios" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

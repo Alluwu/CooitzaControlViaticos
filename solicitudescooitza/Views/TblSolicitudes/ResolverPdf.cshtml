@@ -1,0 +1,120 @@
+﻿@model solicitudescooitza.Models.TblSolicitudes
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de Liquidación</title>
+</head>
+<style>
+    .body {
+        margin: 20px;
+        padding: auto;
+    }
+
+    .container {
+        display: flex;
+        align-items: center;
+    }
+
+    .detail-container {
+        text-align: center;
+    }
+
+    .container p {
+        margin: 0;
+        padding: 10px;
+        border: 1px solid black;
+    }
+
+    .corner-image {
+        position: absolute;
+        top: 5px; /* Ajustamos la distancia desde la parte superior */
+        left: 5px; /* Ajustamos la distancia desde la parte izquierda */
+        width: 200px; /* Ajustamos el ancho de la imagen */
+        height: 90px; /* Ajustamos la altura de la imagen */
+    }
+
+    table {
+        border-collapse: collapse;
+        border: 1px solid #ccc;
+    }
+
+    td,
+    th {
+        padding: 10px;
+    }
+
+    th {
+        background: #000;
+        color: #fff;
+        text-transform: uppercase;
+    }
+
+    td {
+        text-align: center;
+        border-bottom: 2px solid #111;
+        color: #333;
+        font-size: 18px;
+    }
+</style>
+<body>
+    <img src="~/Images/logo.jpeg" alt="Imagen en esquina" class="corner-image">
+    <h1 class="detail-container">Detalle de Liquidacion</h1>
+    <div class="container">
+        <h4>Nombres y Apellidos:</h4>
+        <p style="margin: 20px;">@Html.DisplayFor(model => model.TblUsuarios)</p>
+    </div>
+    <div class="container">
+        <h4>Cargo que Desempeña:</h4>
+        <p style="margin: 20px;">@Html.DisplayFor(model => model.colaborador.cargo)</p>
+        <h4>Gerencia:</h4>
+        <p style="margin: 20px;">@Html.DisplayFor(model => model.colaborador.gerencia)</p>
+    </div>
+    <div class="container">
+        <h4>Codigo de Empleado</h4>
+        <p style="margin: 20px;">@Html.DisplayFor(model => model.colaborador.codigoEmpleado)</p>
+        <h4>Categoria</h4>
+        <p style="margin: 20px;">@Html.DisplayFor(model => model.colaborador.categoria)</p>
+        <h4>No. cuenta</h4>
+        <p style="margin: 20px;">@Html.DisplayFor(model => model.colaborador.noCuenta)</p>
+    </div>
+    <div class="container">
+        <h4>Periodo reportado del</h4>
+        <p style="margin: 20px;">@Html.DisplayFor(model => model.colaborador.periodoInicial)</p>
+        <h4>al</h4>
+        <p style="margin: 20px;">@Html.DisplayFor(model => model.colaborador.periodoFinal)</p>
+    </div>
+    <h1 class="detail-container">Viaticos</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Desayuno</th>
+                <th>Almuerzo</th>
+                <th>Cena</th>
+                <th>Hospedaje</th>
+                <th>Total del dia</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.rubros)
+            {
+                <tr>
+                    <td>@item.fecha</td>
+                    <td>@item.desayuno</td>
+                    <td>@item.almuerzo</td>
+                    <td>@item.cena</td>
+                    <td>@item.hospedaje</td>
+                    <td>@item.totalDia</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>

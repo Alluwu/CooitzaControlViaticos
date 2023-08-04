@@ -1,0 +1,507 @@
+﻿@model solicitudescooitza.Models.TblSolicitudes
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+
+    <div class="row">
+        <div class="col-12">
+            <div>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="my-3">
+
+                            <div id="transac-directorios" class="col-12">
+
+                                <div class="mb-0"><button type="button" class="btn btn-primary btn-lg" onclick="location.href='@Url.Action("Index", "TblSolicitudes")'" style="box-shadow: 0 0.15rem 1.75rem 0 rgb(33 40 50 / 15%); background: #153d77;"><i class="bi bi-backspace-fill"></i></button></div>
+
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                @Html.HiddenFor(model => model.idTblSolicitudes)
+                                <div class="row px-1 px-sm-1 px-md-12 px-lg-12 text-center">
+                                    <h4 class="text-primary" style="color: #153d77 !important;">Solicitud de Viaticos <span><i class="fa-solid fa-store"></i></span></h4>
+                                </div>
+                                <hr />
+                                <div class="container overflow-hidden">
+                                    <div class="row gx-5">
+                                        <div class="col">
+                                            <div class="p-3 border bg-light">@Model.fechaInicio</div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="p-3 border bg-light">@Model.fechaFin</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="container overflow-hidden">
+                                    <div class="row gx-5">
+                                        <div class="col">
+                                            <div class="p-3 border bg-light">@Model.montoTotal</div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="p-3 border bg-light">@Model.motivoComision</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="container overflow-hidden">
+                                    <div class="row gx-5">
+                                        <div class="col">
+                                            <div class="p-3 border bg-light">@Model.TblUsuarios.primerNombre</div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="p-3 border bg-light">@Model.TblUsuarios.primerApellido</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="container overflow-hidden">
+                                    <div class="row gx-5">
+                                        <div class="col">
+                                            <div class="p-3 border bg-light">@Model.observacionesLiquidacion</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row px-1 px-sm-1 px-md-3 px-lg-4">
+                                    <div class="col-12 col-sm-12  col-md-4 col-lg-4">
+                                        @Html.Label("Proveedor", new { @class = "form-label" })
+                                        <div class="input-group input-group-lg mb-3">
+                                            <span class="input-group-text">
+                                                <i class="bi bi-person"></i>
+                                            </span>
+                                            @Html.DropDownList("idCatProveedores", null, htmlAttributes: new { @class = "form-select" })
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+                                        @Html.Label("Rubro", new { @class = "form-label" })
+                                        <div class="input-group input-group-lg mb-3">
+                                            <span class="input-group-text">
+                                                <i class="bi bi-list-stars"></i>
+                                            </span>
+                                            @Html.DropDownList("idCatRubros", null, htmlAttributes: new { @class = "form-select" })
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12  col-md-4 col-lg-4">
+                                        @Html.Label("Monto", new { @class = "form-label" })
+                                        <div class="input-group input-group-lg mb-3">
+                                            <span class="input-group-text">
+                                                <i class="bi bi-cash-coin"></i>
+                                            </span>
+
+                                            @Html.EditorFor(model => model.monto, new { htmlAttributes = new { @class = "form-control" } })
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12  col-md-4 col-lg-4">
+                                        @Html.Label("Fecha", new { @class = "form-label" })
+                                        <div class="input-group input-group-lg mb-3">
+                                            <span class="input-group-text">
+                                                <i class="bi bi-calendar-date"></i>
+                                            </span>
+
+                                            @Html.EditorFor(model => model.fecha, new { htmlAttributes = new { @class = "form-control", type = "date", value = "dd/mm/yyyy" } })
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12  col-md-4 col-lg-4">
+                                        @Html.Label("Cantidad", new { @class = "form-label" })
+                                        <div class="input-group input-group-lg mb-3">
+                                            <span class="input-group-text">
+                                                <i class="bi bi-wallet2"></i>
+                                            </span>
+                                            @Html.EditorFor(model => model.cantidad, new { htmlAttributes = new { @class = "form-control" } })
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12  col-md-4 col-lg-4">
+                                        @Html.Label("Imagen", new { @class = "form-label" })
+                                        <div class="input-group input-group-lg mb-3">
+                                            <span class="input-group-text">
+                                                <i class="bi bi-image-fill"></i>
+                                            </span>
+                                            @Html.EditorFor(model => model.imagen, new { htmlAttributes = new { @class = "form-control", type = "file", name = "imagenFile" } })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row px-1 px-sm-1 px-md-3 px-lg-4">
+                                    <div class="col-12 col-sm-12  col-md-12 col-lg-12">
+                                        @Html.Label("Descripcion", new { @class = "form-label" })
+                                        <div class="input-group input-group-lg mb-3">
+                                            <span class="input-group-text">
+                                                <i class="bi bi-person-lines-fill"></i>
+                                            </span>
+                                            @Html.EditorFor(model => model.razon, new { htmlAttributes = new { @class = "form-control", rows = "" } })
+
+                                            @Html.ValidationMessageFor(model => model.razon, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="hidden" id="idTblSolicitudesCatRubros" name="idTblSolicitudesCatRubros" value="">
+
+                                <br />
+                                <div class="row px-1 px-sm-1 px-md-3 px-lg-4">
+
+
+
+                                    <button type="button" class="btn btn-primary" id="agregar">Agregar</button>
+                                    <button type="button" class="btn btn-primary" id="actualizar">Actualizar</button>
+
+
+                                </div>
+                            </div>
+                            <br />
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Proveedor</th>
+                                        <th scope="col">Rubro</th>
+                                        <th scope="col">Monto</th>
+                                        <th scope="col">Fecha</th>
+                                        <th scope="col">Cantidad</th>
+                                        <th scope="col">Imagen</th>
+                                        <th scope="col">Descripcion</th>
+                                        <th scope="col">Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbodySolicitudes">
+                                </tbody>
+                            </table>
+                            <div class="row px-1 px-sm-1 px-md-3 px-lg-4">
+                                <button type="button" class="btn btn-primary" id="completar">Completar</button>
+                            </div>
+                            <div class="input-group mb-3">
+                                <p>Total : </p>
+                                <span class="input-group-text">Q</span>
+                                <span class="input-group-text" id="totalQuetzales">0.00</span>
+                            </div>
+                            <div class="input-group mb-3">
+                                <p>Total Liquidacion: </p>
+                                <span class="input-group-text">Q</span>
+                                <span class="input-group-text" id="rembolsoReintegro">0.00</span>
+                            </div>
+                            <p>Tipo de Transacción: <span id="tipoTransaccion"></span></p> <input type="file" name="imagenTransaccion" id="imagenTransaccion">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<script>
+    $(document).ready(function () {
+        $("#actualizar").hide();
+        var idTblSolicitudes = $("#idTblSolicitudes").val();
+        GetSolicitudes(idTblSolicitudes);
+        obtenerTotalQuetzales(idTblSolicitudes);
+        $(document).on("click", "#eliminar", function () {
+            var idTblSolicitudesCatRubros = $(this).data("id");
+            eliminarSolicitud(idTblSolicitudesCatRubros);
+        });
+        $(document).on("click", "#completar", function () {
+        var idTblSolicitudes = $("#idTblSolicitudes").val();
+
+        $.ajax({
+            url: "@Url.Action("CompletarSolicitud", "TblSolicitudes")",
+            method: "POST",
+            dataType: "json",
+            data: { idTblSolicitudes: idTblSolicitudes },
+            success: function (response) {
+                if (response.codigo == 1) {
+                    // Redirigir al índice cuando se haya completado la solicitud
+                    window.location.href = "@Url.Action("Index", "TblSolicitudes")";
+                } else {
+                    alert(response.descripcion);
+                }
+            },
+            error: function (xhr, status, error) {
+                console.log("Error en la solicitud AJAX: " + error);
+                alert("Error en la solicitud AJAX: " + error);
+            }
+        });
+    });
+         function eliminarSolicitud(idTblSolicitudesCatRubros) {
+        var _url = "@Url.Action("EliminarSolicitud", "TblSolicitudes")";
+
+        $.ajax({
+            url: _url,
+            method: "POST",
+            dataType: "json",
+            data: { idTblSolicitudesCatRubros: idTblSolicitudesCatRubros }, // Datos que enviarás al servidor
+            success: function (response) {
+                if (response.codigo == 1) {
+                    var idTblSolicitudes = $("#idTblSolicitudes").val();
+                    obtenerTotalQuetzales(idTblSolicitudes);
+                    GetSolicitudes(idTblSolicitudes); // Vuelve a obtener las solicitudes después de eliminar
+                } else {
+                    alert(response.descripcion);
+                }
+            },
+            error: function (xhr, status, error) {
+                console.log("Error en la solicitud AJAX: " + error);
+                alert("Error en la solicitud AJAX: " + error);
+            }
+        });
+    }
+
+     $("#actualizar").click(function () {
+    var idTblSolicitudesCatRubros = $("#idTblSolicitudesCatRubros").val();
+    var idTblSolicitudes = $("#idTblSolicitudes").val();
+    var idCatProveedores = $("#idCatProveedores").val();
+    var idCatRubros = $("#idCatRubros").val();
+    var razon = $("#razon").val();
+    var monto = $("#monto").val();
+    var fecha = $("#fecha").val();
+    var cantidad = $("#cantidad").val();
+    var imagenFile = $("#imagen").get(0).files[0]; // Obtener el archivo de imagen seleccionado
+
+    var formData = new FormData();
+    formData.append("idTblSolicitudesCatRubros", idTblSolicitudesCatRubros);
+    formData.append("idTblSolicitudes", idTblSolicitudes);
+    formData.append("idCatProveedores", idCatProveedores);
+    formData.append("idCatRubros", idCatRubros);
+    formData.append("razon", razon);
+    formData.append("monto", monto);
+    formData.append("fecha", fecha);
+    formData.append("cantidad", cantidad);
+    formData.append("imagenFile", imagenFile); // Agregar el archivo de imagen al FormData
+
+
+    console.log(formData);
+
+    $.ajax({
+        url: "@Url.Action("ActualizarSolicitud", "TblSolicitudes")",
+        method: "POST",
+        dataType: "json",
+        data: formData, // Usar el FormData en lugar del JSON.stringify
+        contentType: false, // No configurar el contentType y processData
+        processData: false,
+        success: function (response) {
+            console.log(response);
+            if (response.codigo == 1) {
+                var idTblSolicitudes = $("#idTblSolicitudes").val();
+                obtenerTotalQuetzales(idTblSolicitudes);
+                GetSolicitudes(idTblSolicitudes);
+                $("#idTblSolicitudesCatRubros").val("");
+                $("#idCatProveedores").val("");
+                $("#idCatRubros").val("");
+                $("#razon").val("");
+                $("#monto").val("");
+                $("#fecha").val("");
+                $("#cantidad").val("");
+                $("#imagen").val("");
+                $("#agregar").show();
+                $("#actualizar").hide();
+            } else {
+                alert(response.descripcion);
+            }
+        },
+        error: function (xhr, status, error) {
+            console.log("Error en la solicitud AJAX: " + error);
+        }
+    });
+});
+
+
+
+
+  $("#agregar").click(function () {
+    var idTblSolicitudes = $("#idTblSolicitudes").val();
+    var idCatProveedores = $("#idCatProveedores").val();
+    var idCatRubros = $("#idCatRubros").val();
+    var razon = $("#razon").val();
+    var monto = $("#monto").val();
+    var fecha = $("#fecha").val();
+    var cantidad = $("#cantidad").val();
+    var imagen = $("#imagen").val();
+
+    var formData = new FormData();
+    formData.append("idTblSolicitudes", idTblSolicitudes);
+    formData.append("idCatProveedores", idCatProveedores);
+    formData.append("idCatRubros", idCatRubros);
+    formData.append("razon", razon);
+    formData.append("monto", monto);
+    formData.append("fecha", fecha);
+    formData.append("cantidad", cantidad);
+    formData.append("imagenFile", $("#imagen")[0].files[0]);
+
+    $.ajax({
+        url: "@Url.Action("Edit", "TblSolicitudes")",
+        method: "POST",
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (response) {
+            console.log(response);
+            if (response.codigo == 1) {
+                var idTblSolicitudes = $("#idTblSolicitudes").val();
+                GetSolicitudes(idTblSolicitudes);
+                $("#idCatProveedores").val("");
+                $("#idCatRubros").val("");
+                $("#razon").val("");
+                $("#monto").val("");
+                $("#fecha").val("");
+                $("#cantidad").val("");
+                $("#imagen").val("");
+                obtenerTotalQuetzales(idTblSolicitudes);
+            } else {
+                alert(response.descripcion);
+            }
+        },
+        error: function (xhr, status, error) {
+            console.log("Error en la solicitud AJAX: " + error);
+        }
+    });
+  });
+function obtenerTotalQuetzales(idTblSolicitudes) {
+    $.ajax({
+        url: "@Url.Action("ObtenerTotalQuetzales", "TblSolicitudes")",
+        method: "GET",
+        data: { idTblSolicitudes: idTblSolicitudes }, // Pasa el ID a la acción del controlador
+        success: function (response) {
+            console.log(response);
+            // Actualizar el campo totalQuetzales con el nuevo valor recibido
+            $("#totalQuetzales").text(response.totalQuetzales);
+            $("#rembolsoReintegro").text(response.rembolsoReintegro);
+            var tipoTransaccionLabel = $("#tipoTransaccion");
+            if (response.rembolsoReintegro < 0) {
+                tipoTransaccionLabel.text("REEMBOLSO");
+                $("#imagenTransaccion").prop("disabled", false); // Habilitar campo de subida de imagen
+                $("#imagenTransaccion").hide(); // Mostrar campo de subida de imagen
+            } else {
+                tipoTransaccionLabel.text("REINTEGRO");
+                $("#imagenTransaccion").prop("disabled", false); // Deshabilitar campo de subida de imagen
+                $("#imagenTransaccion").show(); // Ocultar campo de subida de imagen
+            }
+        },
+        error: function (xhr, status, error) {
+            console.log("Error en la solicitud AJAX para obtener totalQuetzales: " + error);
+        }
+    });
+}
+
+        $(document).on("click", ".editar", function () {
+            var idTblSolicitudesCatRubros = $(this).data("id");
+            GetSolicitudById(idTblSolicitudesCatRubros);
+        });
+
+
+   function GetSolicitudById(idTblSolicitudesCatRubros) {
+    var _url = "@Url.Action("GetSolicitudById", "TblSolicitudes")?idTblSolicitudesCatRubros=" + idTblSolicitudesCatRubros;
+    $.ajax({
+        url: _url,
+        method: "GET",
+        dataType: "json",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        success: function (response) {
+            console.log(response);
+            if (response.codigo == 1) {
+                $("#idTblSolicitudesCatRubros").val(response.solicitud.idTblSolicitudesCatRubros);
+                $("#idTblSolicitudes").val(response.solicitud.idTblSolicitudes);
+                $("#idCatProveedores").val(response.solicitud.idCatProveedores);
+                $("#idCatRubros").val(response.solicitud.idCatRubros);
+                $("#razon").val(response.solicitud.razon);
+                $("#fecha").val(response.solicitud.fecha != null ? new Date(response.solicitud.fecha).toISOString().slice(0, 10) : "");
+                $("#monto").val(response.solicitud.monto);
+                $("#cantidad").val(response.solicitud.cantidad);
+
+                // Mostrar la imagen si está disponible
+                if (response.solicitud.imagen) {
+                    $("#imagenMostrar").attr("src", "data:image/jpeg;base64," + response.solicitud.imagen);
+                }
+
+                $("#agregar").hide();
+                $("#actualizar").show();
+
+            }
+            else {
+                alert(response.descripcion);
+            }
+        },
+        error: function (xhr, status, error) {
+            console.log("Error en la solicitud AJAX: " + error);
+            alert("Error en la solicitud AJAX: " + error);
+        }
+    });
+}
+
+
+        function GetSolicitudes(idTblSolicitudes)
+        {
+              //console.log(idTblSolicitudes);
+
+            var _url = "@Url.Action("GetSolicicitudes", "TblSolicitudes")?idTblSolicitudes=" + idTblSolicitudes;
+
+            console.log(_url);
+              $.ajax({
+                url: _url,
+                method: "GET",
+                dataType: "json",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                success: function (response) {
+                    console.log(response);
+                    console.log(response.listado);
+
+                    if (response.codigo == 1) {
+                        pintarDatosEnTabla(response.listado)
+                    }
+                    else
+                    {
+                        alert(response.descripcion);
+                    }
+
+                },
+                error: function (xhr, status, error) {
+                    console.log("Error en la solicitud AJAX: " + error);
+                    alert("Error en la solicitud AJAX: " + error);
+                }
+         });
+        }
+
+
+        function pintarDatosEnTabla(data) {
+            $("#tbodySolicitudes").html(''); // Limpiar el tbody
+            $.each(data, function (key, item) {
+                var html = '';
+                html += '<tr>';
+                html += `<td>${item.Proveedor}</td>`;
+                html += `<td>${item.Rubro}</td>`;
+                html += `<td>${item.Monto}</td>`;
+                html += `<td class="fw-bold">${item.Fecha}</td>`;
+                html += `<td class="fw-bold">${item.Cantidad}</td>`;
+                html += `<td><img src="${item.Imagen}" alt="Imagen de la solicitud" data-imagen="${item.Imagen}" style="max-width: 100px; cursor: pointer;"></td>`; // Agregar la imagen como un elemento img con el src y el atributo data-imagen configurado
+                html += `<td>${item.Detalle}</td>`;
+                html += `<td class="table-action">
+                <div class="row">
+                    <div class="col-6 text-center">
+                         <a href="#" class="editar" data-id="${item.idTblSolicitudesCatRubros}" codigo="${item.idTblSolicitudesCatRubros}">
+                            <i class="bi bi-pencil-square"></i>
+                        </a>
+                    </div>
+                    <div class="col-6 text-center">
+                        <a href="#" id="eliminar" data-id="${item.idTblSolicitudesCatRubros}" codigo="${item.idTblSolicitudesCatRubros}">
+                           <i class="bi bi-trash3"></i>
+                        </a>
+                    </div>
+                </div>
+        </td>`;
+                html += '</tr>';
+                $("#tbodySolicitudes").append(html);
+            });
+
+            // Agregar el evento click a las imágenes
+            $("img[data-imagen]").click(function () {
+                var imagenUrl = $(this).data("imagen");
+                window.open(imagenUrl, "_blank");
+            });
+        }
+    });
+</script>

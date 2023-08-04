@@ -1,0 +1,499 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="developerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CatEstados">
+    <Key>
+      <PropertyRef Name="idCatEstados" />
+    </Key>
+    <Property Name="idCatEstados" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="fechaAlta" Type="DateTime" Precision="3" />
+    <Property Name="fechaModificacion" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="CatRubros" Relationship="Self.FK_CatRubros_CatEstados" FromRole="CatEstados" ToRole="CatRubros" />
+    <NavigationProperty Name="TblSolicitudes" Relationship="Self.FK_TblSolicitudes_CatEstados" FromRole="CatEstados" ToRole="TblSolicitudes" />
+  </EntityType>
+  <EntityType Name="CatGenerencia">
+    <Key>
+      <PropertyRef Name="idCatGerencia" />
+    </Key>
+    <Property Name="idCatGerencia" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="fecha" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="TblUsuarios" Relationship="Self.FK_TblUsuarios_CatGenerencia" FromRole="CatGenerencia" ToRole="TblUsuarios" />
+  </EntityType>
+  <EntityType Name="CatProveedores">
+    <Key>
+      <PropertyRef Name="idCatproveedores" />
+    </Key>
+    <Property Name="idCatproveedores" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descipcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TblSolicitudes" Relationship="Self.FK_TblSolicitud_CatProveedores" FromRole="CatProveedores" ToRole="TblSolicitudes" />
+    <NavigationProperty Name="TblSolicitudesCatRubros" Relationship="Self.FK_TblSolicitudesCatRubros_CatProveedores" FromRole="CatProveedores" ToRole="TblSolicitudesCatRubros" />
+  </EntityType>
+  <EntityType Name="CatRoles">
+    <Key>
+      <PropertyRef Name="idCatRoles" />
+    </Key>
+    <Property Name="idCatRoles" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="fechaAlta" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="TblUsuarios" Relationship="Self.FK_TblUsuarios_CatRols" FromRole="CatRoles" ToRole="TblUsuarios" />
+  </EntityType>
+  <EntityType Name="CatRubros">
+    <Key>
+      <PropertyRef Name="idCatRubros" />
+    </Key>
+    <Property Name="idCatRubros" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="idTblUsuarioAlta" Type="Int64" />
+    <Property Name="fechaAlta" Type="DateTime" Precision="3" />
+    <Property Name="fechaModificacion" Type="DateTime" Precision="3" />
+    <Property Name="idTblUsuarioModificacion" Type="Int64" />
+    <Property Name="idCatEstados" Type="Int64" />
+    <NavigationProperty Name="CatEstados" Relationship="Self.FK_CatRubros_CatEstados" FromRole="CatRubros" ToRole="CatEstados" />
+    <NavigationProperty Name="TblUsuarios" Relationship="Self.FK_CatRubros_TblUsuarios" FromRole="CatRubros" ToRole="TblUsuarios" />
+    <NavigationProperty Name="TblSolicitudes" Relationship="Self.FK_TblSolicitud_CatRubros" FromRole="CatRubros" ToRole="TblSolicitudes" />
+    <NavigationProperty Name="TblSolicitudes1" Relationship="Self.FK_TblSolicitudes_CatRubros" FromRole="CatRubros" ToRole="TblSolicitudes" />
+    <NavigationProperty Name="TblSolicitudesCatRubros" Relationship="Self.FK_TblSolicitudesCatRubros_CatRubros" FromRole="CatRubros" ToRole="TblSolicitudesCatRubros" />
+  </EntityType>
+  <EntityType Name="CatTipoSolicitud">
+    <Key>
+      <PropertyRef Name="idCatTipoSolicitud" />
+    </Key>
+    <Property Name="idCatTipoSolicitud" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="fechaAlta" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="TblSolicitudes" Relationship="Self.FK_TblSolicitudes_CatTipoSolicitud" FromRole="CatTipoSolicitud" ToRole="TblSolicitudes" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TblCombustible">
+    <Key>
+      <PropertyRef Name="idTblCombustible" />
+    </Key>
+    <Property Name="idTblCombustible" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idTblSolicitudes" Type="Int64" />
+    <Property Name="salida" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="entrada" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="distancia_" Type="Int64" />
+    <Property Name="holgura_" Type="Int64" />
+    <Property Name="precioGalon" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="distanciaPorGalon" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Total" Type="Decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="TblSolicitudes">
+    <Key>
+      <PropertyRef Name="idTblSolicitudes" />
+    </Key>
+    <Property Name="idTblSolicitudes" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idCatProveedores" Type="Int64" />
+    <Property Name="idTblUsuarioModificado" Type="Int32" />
+    <Property Name="idCatRubros" Type="Int64" />
+    <Property Name="idCatEstados" Type="Int64" />
+    <Property Name="idCatTipoSolicitud" Type="Int64" />
+    <Property Name="idTblUsuario" Type="Int64" />
+    <Property Name="observaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="observacionesAutorizacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="observacionesLiquidacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="cantidad" Type="Int64" />
+    <Property Name="lugarDestinoComision" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="lugarOrigenComision" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="motivoComision" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="tipoTransaccion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="imagenTransaccion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="numeroCuenta" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="rembolsoReintegro" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="montoTotal" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="totalQuetzales" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="fechaFin" Type="DateTime" Precision="3" />
+    <Property Name="fecha" Type="DateTime" Precision="3" />
+    <Property Name="monto" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="imagen" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="razon" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="fechaInicio" Type="DateTime" Precision="3" />
+    <Property Name="fechaAlta" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="CatEstados" Relationship="Self.FK_TblSolicitudes_CatEstados" FromRole="TblSolicitudes" ToRole="CatEstados" />
+    <NavigationProperty Name="CatProveedores" Relationship="Self.FK_TblSolicitud_CatProveedores" FromRole="TblSolicitudes" ToRole="CatProveedores" />
+    <NavigationProperty Name="CatRubros" Relationship="Self.FK_TblSolicitud_CatRubros" FromRole="TblSolicitudes" ToRole="CatRubros" />
+    <NavigationProperty Name="CatRubros1" Relationship="Self.FK_TblSolicitudes_CatRubros" FromRole="TblSolicitudes" ToRole="CatRubros" />
+    <NavigationProperty Name="CatTipoSolicitud" Relationship="Self.FK_TblSolicitudes_CatTipoSolicitud" FromRole="TblSolicitudes" ToRole="CatTipoSolicitud" />
+    <NavigationProperty Name="TblUsuarios" Relationship="Self.FK_TblSolicitud_TblUsuarios" FromRole="TblSolicitudes" ToRole="TblUsuarios" />
+    <NavigationProperty Name="TblSolicitudesCatRubros" Relationship="Self.FK_TblSolicitudesCatRubros_TblSolicitudes" FromRole="TblSolicitudes" ToRole="TblSolicitudesCatRubros" />
+    <NavigationProperty Name="TblSolicitudesPendientes" Relationship="Self.FK_TblSolicitudesPendientes_TblSolicitudes" FromRole="TblSolicitudes" ToRole="TblSolicitudesPendientes" />
+  </EntityType>
+  <EntityType Name="TblSolicitudesCatRubros">
+    <Key>
+      <PropertyRef Name="idTblSolicitudesCatRubros" />
+    </Key>
+    <Property Name="idTblSolicitudesCatRubros" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idTblSolicitudes" Type="Int64" />
+    <Property Name="idCatRubros" Type="Int64" />
+    <Property Name="idCatProveedores" Type="Int64" />
+    <Property Name="idCatEstados" Type="Int64" />
+    <Property Name="detalle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="monto" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="fechaFactura" Type="DateTime" Precision="3" />
+    <Property Name="cantidad" Type="Int64" />
+    <Property Name="imagen" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="fechaAlta" Type="DateTime" Precision="3" />
+    <Property Name="idTblUsuarios" Type="Int64" />
+    <Property Name="fechaModificacion" Type="DateTime" Precision="3" />
+    <Property Name="idTblUsuarioModifica" Type="Int64" />
+    <NavigationProperty Name="CatProveedores" Relationship="Self.FK_TblSolicitudesCatRubros_CatProveedores" FromRole="TblSolicitudesCatRubros" ToRole="CatProveedores" />
+    <NavigationProperty Name="CatRubros" Relationship="Self.FK_TblSolicitudesCatRubros_CatRubros" FromRole="TblSolicitudesCatRubros" ToRole="CatRubros" />
+    <NavigationProperty Name="TblSolicitudes" Relationship="Self.FK_TblSolicitudesCatRubros_TblSolicitudes" FromRole="TblSolicitudesCatRubros" ToRole="TblSolicitudes" />
+  </EntityType>
+  <EntityType Name="TblSolicitudesPendientes">
+    <Key>
+      <PropertyRef Name="idTlbSolicitudesPendientes" />
+    </Key>
+    <Property Name="idTlbSolicitudesPendientes" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idTblSolicitudes" Type="Int64" />
+    <Property Name="idTblUsuarios" Type="Int64" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="TblSolicitudes" Relationship="Self.FK_TblSolicitudesPendientes_TblSolicitudes" FromRole="TblSolicitudesPendientes" ToRole="TblSolicitudes" />
+    <NavigationProperty Name="TblUsuarios" Relationship="Self.FK_TblSolicitudesPendientes_TblUsuarios" FromRole="TblSolicitudesPendientes" ToRole="TblUsuarios" />
+  </EntityType>
+  <EntityType Name="TblUsuarios">
+    <Key>
+      <PropertyRef Name="idTblUsuarios" />
+    </Key>
+    <Property Name="idTblUsuarios" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="primerNombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="segundoNombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="primerApellido" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="segundoApellido" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="tercerApellido" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Correo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Contraseña" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="codigoEmpleado" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="numeroCuenta" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="idRol" Type="Int64" Nullable="false" />
+    <Property Name="categoria" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="idCatGerencia" Type="Int64" />
+    <NavigationProperty Name="CatGenerencia" Relationship="Self.FK_TblUsuarios_CatGenerencia" FromRole="TblUsuarios" ToRole="CatGenerencia" />
+    <NavigationProperty Name="CatRoles" Relationship="Self.FK_TblUsuarios_CatRols" FromRole="TblUsuarios" ToRole="CatRoles" />
+    <NavigationProperty Name="CatRubros" Relationship="Self.FK_CatRubros_TblUsuarios" FromRole="TblUsuarios" ToRole="CatRubros" />
+    <NavigationProperty Name="TblSolicitudes" Relationship="Self.FK_TblSolicitud_TblUsuarios" FromRole="TblUsuarios" ToRole="TblSolicitudes" />
+    <NavigationProperty Name="TblSolicitudesPendientes" Relationship="Self.FK_TblSolicitudesPendientes_TblUsuarios" FromRole="TblUsuarios" ToRole="TblSolicitudesPendientes" />
+  </EntityType>
+  <EntityType Name="database_firewall_rules">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="name" />
+      <PropertyRef Name="start_ip_address" />
+      <PropertyRef Name="end_ip_address" />
+      <PropertyRef Name="create_date" />
+      <PropertyRef Name="modify_date" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="start_ip_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="end_ip_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="modify_date" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <Association Name="FK_CatRubros_CatEstados">
+    <End Role="CatEstados" Type="Self.CatEstados" Multiplicity="0..1" />
+    <End Role="CatRubros" Type="Self.CatRubros" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CatEstados">
+        <PropertyRef Name="idCatEstados" />
+      </Principal>
+      <Dependent Role="CatRubros">
+        <PropertyRef Name="idCatEstados" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblSolicitudes_CatEstados">
+    <End Role="CatEstados" Type="Self.CatEstados" Multiplicity="0..1" />
+    <End Role="TblSolicitudes" Type="Self.TblSolicitudes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CatEstados">
+        <PropertyRef Name="idCatEstados" />
+      </Principal>
+      <Dependent Role="TblSolicitudes">
+        <PropertyRef Name="idCatEstados" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblUsuarios_CatGenerencia">
+    <End Role="CatGenerencia" Type="Self.CatGenerencia" Multiplicity="0..1" />
+    <End Role="TblUsuarios" Type="Self.TblUsuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CatGenerencia">
+        <PropertyRef Name="idCatGerencia" />
+      </Principal>
+      <Dependent Role="TblUsuarios">
+        <PropertyRef Name="idCatGerencia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblSolicitud_CatProveedores">
+    <End Role="CatProveedores" Type="Self.CatProveedores" Multiplicity="0..1" />
+    <End Role="TblSolicitudes" Type="Self.TblSolicitudes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CatProveedores">
+        <PropertyRef Name="idCatproveedores" />
+      </Principal>
+      <Dependent Role="TblSolicitudes">
+        <PropertyRef Name="idCatProveedores" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblSolicitudesCatRubros_CatProveedores">
+    <End Role="CatProveedores" Type="Self.CatProveedores" Multiplicity="0..1" />
+    <End Role="TblSolicitudesCatRubros" Type="Self.TblSolicitudesCatRubros" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CatProveedores">
+        <PropertyRef Name="idCatproveedores" />
+      </Principal>
+      <Dependent Role="TblSolicitudesCatRubros">
+        <PropertyRef Name="idCatProveedores" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblUsuarios_CatRols">
+    <End Role="CatRoles" Type="Self.CatRoles" Multiplicity="1" />
+    <End Role="TblUsuarios" Type="Self.TblUsuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CatRoles">
+        <PropertyRef Name="idCatRoles" />
+      </Principal>
+      <Dependent Role="TblUsuarios">
+        <PropertyRef Name="idRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CatRubros_TblUsuarios">
+    <End Role="TblUsuarios" Type="Self.TblUsuarios" Multiplicity="0..1" />
+    <End Role="CatRubros" Type="Self.CatRubros" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUsuarios">
+        <PropertyRef Name="idTblUsuarios" />
+      </Principal>
+      <Dependent Role="CatRubros">
+        <PropertyRef Name="idTblUsuarioAlta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblSolicitud_CatRubros">
+    <End Role="CatRubros" Type="Self.CatRubros" Multiplicity="0..1" />
+    <End Role="TblSolicitudes" Type="Self.TblSolicitudes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CatRubros">
+        <PropertyRef Name="idCatRubros" />
+      </Principal>
+      <Dependent Role="TblSolicitudes">
+        <PropertyRef Name="idCatRubros" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblSolicitudes_CatRubros">
+    <End Role="CatRubros" Type="Self.CatRubros" Multiplicity="0..1" />
+    <End Role="TblSolicitudes" Type="Self.TblSolicitudes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CatRubros">
+        <PropertyRef Name="idCatRubros" />
+      </Principal>
+      <Dependent Role="TblSolicitudes">
+        <PropertyRef Name="idCatRubros" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblSolicitudesCatRubros_CatRubros">
+    <End Role="CatRubros" Type="Self.CatRubros" Multiplicity="0..1" />
+    <End Role="TblSolicitudesCatRubros" Type="Self.TblSolicitudesCatRubros" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CatRubros">
+        <PropertyRef Name="idCatRubros" />
+      </Principal>
+      <Dependent Role="TblSolicitudesCatRubros">
+        <PropertyRef Name="idCatRubros" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblSolicitudes_CatTipoSolicitud">
+    <End Role="CatTipoSolicitud" Type="Self.CatTipoSolicitud" Multiplicity="0..1" />
+    <End Role="TblSolicitudes" Type="Self.TblSolicitudes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CatTipoSolicitud">
+        <PropertyRef Name="idCatTipoSolicitud" />
+      </Principal>
+      <Dependent Role="TblSolicitudes">
+        <PropertyRef Name="idCatTipoSolicitud" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblSolicitud_TblUsuarios">
+    <End Role="TblUsuarios" Type="Self.TblUsuarios" Multiplicity="0..1" />
+    <End Role="TblSolicitudes" Type="Self.TblSolicitudes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUsuarios">
+        <PropertyRef Name="idTblUsuarios" />
+      </Principal>
+      <Dependent Role="TblSolicitudes">
+        <PropertyRef Name="idTblUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblSolicitudesCatRubros_TblSolicitudes">
+    <End Role="TblSolicitudes" Type="Self.TblSolicitudes" Multiplicity="0..1" />
+    <End Role="TblSolicitudesCatRubros" Type="Self.TblSolicitudesCatRubros" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblSolicitudes">
+        <PropertyRef Name="idTblSolicitudes" />
+      </Principal>
+      <Dependent Role="TblSolicitudesCatRubros">
+        <PropertyRef Name="idTblSolicitudes" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblSolicitudesPendientes_TblSolicitudes">
+    <End Role="TblSolicitudes" Type="Self.TblSolicitudes" Multiplicity="0..1" />
+    <End Role="TblSolicitudesPendientes" Type="Self.TblSolicitudesPendientes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblSolicitudes">
+        <PropertyRef Name="idTblSolicitudes" />
+      </Principal>
+      <Dependent Role="TblSolicitudesPendientes">
+        <PropertyRef Name="idTblSolicitudes" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblSolicitudesPendientes_TblUsuarios">
+    <End Role="TblUsuarios" Type="Self.TblUsuarios" Multiplicity="0..1" />
+    <End Role="TblSolicitudesPendientes" Type="Self.TblSolicitudesPendientes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUsuarios">
+        <PropertyRef Name="idTblUsuarios" />
+      </Principal>
+      <Dependent Role="TblSolicitudesPendientes">
+        <PropertyRef Name="idTblUsuarios" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="developerEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CatEstados" EntityType="Self.CatEstados" />
+    <EntitySet Name="CatGenerencia" EntityType="Self.CatGenerencia" />
+    <EntitySet Name="CatProveedores" EntityType="Self.CatProveedores" />
+    <EntitySet Name="CatRoles" EntityType="Self.CatRoles" />
+    <EntitySet Name="CatRubros" EntityType="Self.CatRubros" />
+    <EntitySet Name="CatTipoSolicitud" EntityType="Self.CatTipoSolicitud" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="TblCombustible" EntityType="Self.TblCombustible" />
+    <EntitySet Name="TblSolicitudes" EntityType="Self.TblSolicitudes" />
+    <EntitySet Name="TblSolicitudesCatRubros" EntityType="Self.TblSolicitudesCatRubros" />
+    <EntitySet Name="TblSolicitudesPendientes" EntityType="Self.TblSolicitudesPendientes" />
+    <EntitySet Name="TblUsuarios" EntityType="Self.TblUsuarios" />
+    <EntitySet Name="database_firewall_rules" EntityType="Self.database_firewall_rules" />
+    <AssociationSet Name="FK_CatRubros_CatEstados" Association="Self.FK_CatRubros_CatEstados">
+      <End Role="CatEstados" EntitySet="CatEstados" />
+      <End Role="CatRubros" EntitySet="CatRubros" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblSolicitudes_CatEstados" Association="Self.FK_TblSolicitudes_CatEstados">
+      <End Role="CatEstados" EntitySet="CatEstados" />
+      <End Role="TblSolicitudes" EntitySet="TblSolicitudes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblUsuarios_CatGenerencia" Association="Self.FK_TblUsuarios_CatGenerencia">
+      <End Role="CatGenerencia" EntitySet="CatGenerencia" />
+      <End Role="TblUsuarios" EntitySet="TblUsuarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblSolicitud_CatProveedores" Association="Self.FK_TblSolicitud_CatProveedores">
+      <End Role="CatProveedores" EntitySet="CatProveedores" />
+      <End Role="TblSolicitudes" EntitySet="TblSolicitudes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblSolicitudesCatRubros_CatProveedores" Association="Self.FK_TblSolicitudesCatRubros_CatProveedores">
+      <End Role="CatProveedores" EntitySet="CatProveedores" />
+      <End Role="TblSolicitudesCatRubros" EntitySet="TblSolicitudesCatRubros" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblUsuarios_CatRols" Association="Self.FK_TblUsuarios_CatRols">
+      <End Role="CatRoles" EntitySet="CatRoles" />
+      <End Role="TblUsuarios" EntitySet="TblUsuarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CatRubros_TblUsuarios" Association="Self.FK_CatRubros_TblUsuarios">
+      <End Role="TblUsuarios" EntitySet="TblUsuarios" />
+      <End Role="CatRubros" EntitySet="CatRubros" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblSolicitud_CatRubros" Association="Self.FK_TblSolicitud_CatRubros">
+      <End Role="CatRubros" EntitySet="CatRubros" />
+      <End Role="TblSolicitudes" EntitySet="TblSolicitudes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblSolicitudes_CatRubros" Association="Self.FK_TblSolicitudes_CatRubros">
+      <End Role="CatRubros" EntitySet="CatRubros" />
+      <End Role="TblSolicitudes" EntitySet="TblSolicitudes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblSolicitudesCatRubros_CatRubros" Association="Self.FK_TblSolicitudesCatRubros_CatRubros">
+      <End Role="CatRubros" EntitySet="CatRubros" />
+      <End Role="TblSolicitudesCatRubros" EntitySet="TblSolicitudesCatRubros" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblSolicitudes_CatTipoSolicitud" Association="Self.FK_TblSolicitudes_CatTipoSolicitud">
+      <End Role="CatTipoSolicitud" EntitySet="CatTipoSolicitud" />
+      <End Role="TblSolicitudes" EntitySet="TblSolicitudes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblSolicitud_TblUsuarios" Association="Self.FK_TblSolicitud_TblUsuarios">
+      <End Role="TblUsuarios" EntitySet="TblUsuarios" />
+      <End Role="TblSolicitudes" EntitySet="TblSolicitudes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblSolicitudesCatRubros_TblSolicitudes" Association="Self.FK_TblSolicitudesCatRubros_TblSolicitudes">
+      <End Role="TblSolicitudes" EntitySet="TblSolicitudes" />
+      <End Role="TblSolicitudesCatRubros" EntitySet="TblSolicitudesCatRubros" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblSolicitudesPendientes_TblSolicitudes" Association="Self.FK_TblSolicitudesPendientes_TblSolicitudes">
+      <End Role="TblSolicitudes" EntitySet="TblSolicitudes" />
+      <End Role="TblSolicitudesPendientes" EntitySet="TblSolicitudesPendientes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblSolicitudesPendientes_TblUsuarios" Association="Self.FK_TblSolicitudesPendientes_TblUsuarios">
+      <End Role="TblUsuarios" EntitySet="TblUsuarios" />
+      <End Role="TblSolicitudesPendientes" EntitySet="TblSolicitudesPendientes" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(developerModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(developerModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>

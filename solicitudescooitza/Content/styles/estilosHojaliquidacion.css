@@ -1,0 +1,61 @@
+﻿
+.body {
+    margin: 20px;
+    padding: auto;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+}
+
+.detail-container {
+    text-align: center;
+}
+
+.container p {
+    margin: 0;
+    padding: 10px;
+    border: 1px solid black;
+}
+
+.corner-image {
+    position: absolute;
+    top: 5px; /* Ajustamos la distancia desde la parte superior */
+    left: 5px; /* Ajustamos la distancia desde la parte izquierda */
+    width: 200px; /* Ajustamos el ancho de la imagen */
+    height: 90px; /* Ajustamos la altura de la imagen */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2; /* Alternar colores de fondo para filas pares */
+}
+
+tr:hover {
+    background-color: #e0e0e0; /* Resaltar fila al pasar el mouse */
+}
+
+/* Estilos para ajustar a tamaños de pantalla más pequeños */
+@media screen and (max-width: 600px) {
+    th, td {
+        padding: 8px;
+    }
+}
+

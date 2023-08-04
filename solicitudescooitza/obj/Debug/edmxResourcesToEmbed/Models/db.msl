@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="developerModelStoreContainer" CdmEntityContainer="developerEntities">
+    <EntitySetMapping Name="CatEstados">
+      <EntityTypeMapping TypeName="developerModel.CatEstados">
+        <MappingFragment StoreEntitySet="CatEstados">
+          <ScalarProperty Name="idCatEstados" ColumnName="idCatEstados" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="fechaAlta" ColumnName="fechaAlta" />
+          <ScalarProperty Name="fechaModificacion" ColumnName="fechaModificacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CatGenerencia">
+      <EntityTypeMapping TypeName="developerModel.CatGenerencia">
+        <MappingFragment StoreEntitySet="CatGenerencia">
+          <ScalarProperty Name="idCatGerencia" ColumnName="idCatGerencia" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CatProveedores">
+      <EntityTypeMapping TypeName="developerModel.CatProveedores">
+        <MappingFragment StoreEntitySet="CatProveedores">
+          <ScalarProperty Name="idCatproveedores" ColumnName="idCatproveedores" />
+          <ScalarProperty Name="descipcion" ColumnName="descipcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CatRoles">
+      <EntityTypeMapping TypeName="developerModel.CatRoles">
+        <MappingFragment StoreEntitySet="CatRoles">
+          <ScalarProperty Name="idCatRoles" ColumnName="idCatRoles" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="fechaAlta" ColumnName="fechaAlta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CatRubros">
+      <EntityTypeMapping TypeName="developerModel.CatRubros">
+        <MappingFragment StoreEntitySet="CatRubros">
+          <ScalarProperty Name="idCatRubros" ColumnName="idCatRubros" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="idTblUsuarioAlta" ColumnName="idTblUsuarioAlta" />
+          <ScalarProperty Name="fechaAlta" ColumnName="fechaAlta" />
+          <ScalarProperty Name="fechaModificacion" ColumnName="fechaModificacion" />
+          <ScalarProperty Name="idTblUsuarioModificacion" ColumnName="idTblUsuarioModificacion" />
+          <ScalarProperty Name="idCatEstados" ColumnName="idCatEstados" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CatTipoSolicitud">
+      <EntityTypeMapping TypeName="developerModel.CatTipoSolicitud">
+        <MappingFragment StoreEntitySet="CatTipoSolicitud">
+          <ScalarProperty Name="idCatTipoSolicitud" ColumnName="idCatTipoSolicitud" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="fechaAlta" ColumnName="fechaAlta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="developerModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TblCombustible">
+      <EntityTypeMapping TypeName="developerModel.TblCombustible">
+        <MappingFragment StoreEntitySet="TblCombustible">
+          <ScalarProperty Name="idTblCombustible" ColumnName="idTblCombustible" />
+          <ScalarProperty Name="idTblSolicitudes" ColumnName="idTblSolicitudes" />
+          <ScalarProperty Name="salida" ColumnName="salida" />
+          <ScalarProperty Name="entrada" ColumnName="entrada" />
+          <ScalarProperty Name="distancia_" ColumnName="distancia " />
+          <ScalarProperty Name="holgura_" ColumnName="holgura " />
+          <ScalarProperty Name="precioGalon" ColumnName="precioGalon" />
+          <ScalarProperty Name="distanciaPorGalon" ColumnName="distanciaPorGalon" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TblSolicitudes">
+      <EntityTypeMapping TypeName="developerModel.TblSolicitudes">
+        <MappingFragment StoreEntitySet="TblSolicitudes">
+          <ScalarProperty Name="idTblSolicitudes" ColumnName="idTblSolicitudes" />
+          <ScalarProperty Name="idCatProveedores" ColumnName="idCatProveedores" />
+          <ScalarProperty Name="idTblUsuarioModificado" ColumnName="idTblUsuarioModificado" />
+          <ScalarProperty Name="idCatRubros" ColumnName="idCatRubros" />
+          <ScalarProperty Name="idCatEstados" ColumnName="idCatEstados" />
+          <ScalarProperty Name="idCatTipoSolicitud" ColumnName="idCatTipoSolicitud" />
+          <ScalarProperty Name="idTblUsuario" ColumnName="idTblUsuario" />
+          <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+          <ScalarProperty Name="observacionesAutorizacion" ColumnName="observacionesAutorizacion" />
+          <ScalarProperty Name="observacionesLiquidacion" ColumnName="observacionesLiquidacion" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="lugarDestinoComision" ColumnName="lugarDestinoComision" />
+          <ScalarProperty Name="lugarOrigenComision" ColumnName="lugarOrigenComision" />
+          <ScalarProperty Name="motivoComision" ColumnName="motivoComision" />
+          <ScalarProperty Name="tipoTransaccion" ColumnName="tipoTransaccion" />
+          <ScalarProperty Name="imagenTransaccion" ColumnName="imagenTransaccion" />
+          <ScalarProperty Name="numeroCuenta" ColumnName="numeroCuenta" />
+          <ScalarProperty Name="rembolsoReintegro" ColumnName="rembolsoReintegro" />
+          <ScalarProperty Name="montoTotal" ColumnName="montoTotal" />
+          <ScalarProperty Name="totalQuetzales" ColumnName="totalQuetzales" />
+          <ScalarProperty Name="fechaFin" ColumnName="fechaFin" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="monto" ColumnName="monto" />
+          <ScalarProperty Name="imagen" ColumnName="imagen" />
+          <ScalarProperty Name="razon" ColumnName="razon" />
+          <ScalarProperty Name="fechaInicio" ColumnName="fechaInicio" />
+          <ScalarProperty Name="fechaAlta" ColumnName="fechaAlta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TblSolicitudesCatRubros">
+      <EntityTypeMapping TypeName="developerModel.TblSolicitudesCatRubros">
+        <MappingFragment StoreEntitySet="TblSolicitudesCatRubros">
+          <ScalarProperty Name="idTblSolicitudesCatRubros" ColumnName="idTblSolicitudesCatRubros" />
+          <ScalarProperty Name="idTblSolicitudes" ColumnName="idTblSolicitudes" />
+          <ScalarProperty Name="idCatRubros" ColumnName="idCatRubros" />
+          <ScalarProperty Name="idCatProveedores" ColumnName="idCatProveedores" />
+          <ScalarProperty Name="idCatEstados" ColumnName="idCatEstados" />
+          <ScalarProperty Name="detalle" ColumnName="detalle" />
+          <ScalarProperty Name="monto" ColumnName="monto" />
+          <ScalarProperty Name="fechaFactura" ColumnName="fechaFactura" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="imagen" ColumnName="imagen" />
+          <ScalarProperty Name="fechaAlta" ColumnName="fechaAlta" />
+          <ScalarProperty Name="idTblUsuarios" ColumnName="idTblUsuarios" />
+          <ScalarProperty Name="fechaModificacion" ColumnName="fechaModificacion" />
+          <ScalarProperty Name="idTblUsuarioModifica" ColumnName="idTblUsuarioModifica" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TblSolicitudesPendientes">
+      <EntityTypeMapping TypeName="developerModel.TblSolicitudesPendientes">
+        <MappingFragment StoreEntitySet="TblSolicitudesPendientes">
+          <ScalarProperty Name="idTlbSolicitudesPendientes" ColumnName="idTlbSolicitudesPendientes" />
+          <ScalarProperty Name="idTblSolicitudes" ColumnName="idTblSolicitudes" />
+          <ScalarProperty Name="idTblUsuarios" ColumnName="idTblUsuarios" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TblUsuarios">
+      <EntityTypeMapping TypeName="developerModel.TblUsuarios">
+        <MappingFragment StoreEntitySet="TblUsuarios">
+          <ScalarProperty Name="idTblUsuarios" ColumnName="idTblUsuarios" />
+          <ScalarProperty Name="primerNombre" ColumnName="primerNombre" />
+          <ScalarProperty Name="segundoNombre" ColumnName="segundoNombre" />
+          <ScalarProperty Name="primerApellido" ColumnName="primerApellido" />
+          <ScalarProperty Name="segundoApellido" ColumnName="segundoApellido" />
+          <ScalarProperty Name="tercerApellido" ColumnName="tercerApellido" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
+          <ScalarProperty Name="codigoEmpleado" ColumnName="codigoEmpleado" />
+          <ScalarProperty Name="numeroCuenta" ColumnName="numeroCuenta" />
+          <ScalarProperty Name="idRol" ColumnName="idRol" />
+          <ScalarProperty Name="categoria" ColumnName="categoria" />
+          <ScalarProperty Name="idCatGerencia" ColumnName="idCatGerencia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="database_firewall_rules">
+      <EntityTypeMapping TypeName="developerModel.database_firewall_rules">
+        <MappingFragment StoreEntitySet="database_firewall_rules">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="start_ip_address" ColumnName="start_ip_address" />
+          <ScalarProperty Name="end_ip_address" ColumnName="end_ip_address" />
+          <ScalarProperty Name="create_date" ColumnName="create_date" />
+          <ScalarProperty Name="modify_date" ColumnName="modify_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="developerModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="developerModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="developerModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="developerModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="developerModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="developerModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="developerModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="developerModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="developerModel.Store.sp_upgraddiagrams" />
+  </EntityContainerMapping>
+</Mapping>

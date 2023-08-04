@@ -1,0 +1,102 @@
+﻿@model solicitudescooitza.Models.TblSolicitudes
+@{
+    ViewBag.Title = "Detalles";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="row mb-4">
+        <div class="col-md-2">
+            <a href="@Url.Action("SolicitudesEstado2", "TblSolicitudes")" class="btn btn-primary btn-lg" style="background-color: #153d77;">
+                <i class="bi bi-backspace-fill"></i>
+            </a>
+        </div>
+        <div class="col-md-10">
+            <h2>Liquidacion</h2>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <tr>
+                <th>No. Solicitud</th>
+                <td>@Model.idTblSolicitudes</td>
+            </tr>
+            <tr>
+                <th>Motivo de Comision</th>
+                <td>@Model.motivoComision</td>
+            </tr>
+            <tr>
+                <th>Monto Solicitado</th>
+                <td>@Model.montoTotal</td>
+            </tr>
+            <tr>
+                <th>Colaborador</th>
+                <td>@Model.TblUsuarios.primerNombre @Model.TblUsuarios.primerApellido</td>
+            </tr>
+        </table>
+    </div>
+
+ 
+    @if (ViewBag.TblSolicitudesCatRubros != null && ViewBag.TblSolicitudesCatRubros.Count > 0)
+    {
+        <div class="table-responsive">
+           <table class="table table-striped">
+               <thead>
+                   <tr>
+                       <th>ID</th>
+                       <th>Monto</th>
+                       <th>Rubros</th>
+                       <th>Descripcion</th>
+                       <th>Factura</th>
+                   </tr>
+               </thead>
+               <tbody>
+                   @foreach (var rubro in ViewBag.TblSolicitudesCatRubros)
+                   {
+                       <tr>
+                           <td>@rubro.idTblSolicitudesCatRubros</td>
+                           <td> Q @rubro.monto</td>
+                           <td>@rubro.CatRubros.descripcion</td>
+                           <td>@rubro.detalle </td>
+                           <td>
+                               <a href="@Url.Content(rubro.imagen)" target="_blank">
+                                   <img src="@Url.Content(rubro.imagen)" alt="Imagen del rubro" width="100" height="50" />
+                               </a>
+                           </td>
+
+                       </tr>
+
+                   }
+               <tr>
+                   <th scope="row">Total</th>
+                   <td colspan="2" class="table-active">@Model.totalQuetzales</td>
+                   <th scope="row">@Model.tipoTransaccion</th>
+                   <td>@(Model.rembolsoReintegro < 0 ? -Model.rembolsoReintegro : Model.rembolsoReintegro)</td>
+               </tr>
+               </tbody>
+           </table>
+        </div>
+    }
+    else
+    {
+        <p>No hay rubros relacionados para esta solicitud.</p>
+    }
+
+    @using (Html.BeginForm("ProcesarLiquidacion", "TblSolicitudes", FormMethod.Post, new { @class = "row g-3" }))
+    {
+        @Html.HiddenFor(model => model.idTblSolicitudes)
+        <div class="col-md-12">
+            <label for="observacionesAutorizacion" class="form-label">Observaciones de autorización:</label>
+            @Html.TextAreaFor(model => model.observacionesLiquidacion, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.observacionesLiquidacion, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="col-md-12 mt-3">
+            <button type="submit" name="accion" value="Rechazar" class="btn btn-danger me-3">Rechazar</button>
+            <button type="submit" name="accion" value="Aprobar" class="btn btn-success">Aprobar</button>
+        </div>
+    }
+</div>
+
+

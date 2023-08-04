@@ -1,0 +1,35 @@
+﻿@model IEnumerable<solicitudescooitza.Models.TblSolicitudesPendientes>
+@{
+    ViewBag.Title = "SolicitudesPendientes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>SolicitudesPendientes</h2>
+
+@if (Model.Any())
+{
+    <table>
+        <tr>
+            <th>ID de Solicitud</th>
+            <th>Fecha de Creación</th>
+            <th>Solicitante</th>
+        </tr>
+        @foreach (var solicitud in Model)
+        {
+            <tr>
+                <td>@solicitud.idTblSolicitudes</td>
+                <td>@solicitud.TblUsuarios.primerNombre</td>
+                <td>@solicitud.FechaCreacion</td>
+
+                @if (solicitud.TblSolicitudes.idCatEstados == 2)
+                {
+                    <td>  <a class="btn btn-primary" href="@Url.Action("AprobarSolicitud", "TblSolicitudes", new { idTblSolicitudes = solicitud.idTblSolicitudes })" data-confirm="¿Estás seguro de aprobar esta solicitud?">Aprobar</a></td>
+                }
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <p>No hay solicitudes pendientes para este administrador.</p>
+}

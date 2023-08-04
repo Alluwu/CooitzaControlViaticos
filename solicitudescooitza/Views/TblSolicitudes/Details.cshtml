@@ -1,0 +1,66 @@
+﻿@model solicitudescooitza.Models.TblSolicitudes
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalles de la Solicitud</h2>
+
+<div class="mb-0"><button type="button" class="btn btn-primary btn-lg" onclick="location.href='@Url.Action("SolicitudesEstado2", "TblSolicitudes")'" style="box-shadow: 0 0.15rem 1.75rem 0 rgb(33 40 50 / 15%); background: #153d77;"><i class="bi bi-backspace-fill"></i></button></div>
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <tr>
+            <th>MOTIVO DE LA COMISION </th>
+            <td>@Html.DisplayFor(model => model.motivoComision)</td>
+        </tr>
+        <tr>
+            <th>MONTO TOTAL SOLICITADO</th>
+            <td>@Html.DisplayFor(model => model.montoTotal)</td>
+        </tr>
+        <tr>
+            <th>FECHA INICIO</th>
+            <td>@Html.DisplayFor(model => model.fechaInicio)</td>
+        </tr>
+        <tr>
+            <th>FECHA FIN</th>
+            <td>@Html.DisplayFor(model => model.fechaFin)</td>
+        </tr>
+        <tr>
+            <th>FECHA DE PETICION</th>
+            <td>@Html.DisplayFor(model => model.fechaAlta)</td>
+        </tr>
+        <tr>
+            <th>NOMBRE DEL COLABORADOR</th>
+            <td>@(Model.TblUsuarios.primerNombre + " " + Model.TblUsuarios.primerApellido)</td>
+        </tr>
+        <tr>
+            <th>NO. CUENTA</th>
+            <td>@Html.DisplayFor(model => model.numeroCuenta)</td>
+        </tr>
+    </table>
+</div>
+
+@using (Html.BeginForm("ProcesarSolicitud", "TblSolicitudes", FormMethod.Post))
+{
+    @Html.HiddenFor(model => model.idTblSolicitudes)
+    <div class="form-group">
+        OBSERVACION DE AUTORIZACION
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.observacionesAutorizacion, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.observacionesAutorizacion, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" name="accion" value="Rechazar" class="btn btn-danger" />
+            <input type="submit" name="accion" value="Aprobar" class="btn btn-success" />
+        </div>
+    </div>
+}
+
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
+

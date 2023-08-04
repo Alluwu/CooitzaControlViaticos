@@ -1,0 +1,93 @@
+﻿@model solicitudescooitza.Models.TblSolicitudes
+
+@{
+    ViewBag.Title = "CrearNuevoRegistro";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2> Anticipo </h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-label">Lugar</label>
+                    @Html.EditorFor(model => model.lugarOrigenComision, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-label">Número de Cuenta</label>
+                    @Html.EditorFor(model => model.numeroCuenta, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="form-group">
+                    <label class="form-label">Motivo de Comision</label>
+                    @Html.EditorFor(model => model.motivoComision, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="form-group">
+                    <label class="form-label">Lugar de Destino</label>
+                    @Html.EditorFor(model => model.lugarDestinoComision, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-label">Monto Solicitado</label>
+                    @Html.EditorFor(model => model.montoTotal, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-6">
+                <div class="form-group">
+                    @Html.Label("Fecha de Inicio", new { @class = "form-label" })
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">
+                            <i class="bi bi-calendar-date"></i>
+                        </span>
+                        @Html.EditorFor(model => model.fechaInicio, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-6">
+                <div class="form-group">
+                    @Html.Label("Fecha de Fin", new { @class = "form-label" })
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">
+                            <i class="bi bi-calendar-date"></i>
+                        </span>
+                        @Html.EditorFor(model => model.fechaFin, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="form-group text-center">
+                    <input type="submit" value="Crear" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div class="text-center">
+    @Html.ActionLink("Volver a la Lista", "Index", null, new { @class = "btn btn-secondary" })
+</div>
+
+<script>
+</script>
+
+
+
+
+
+
